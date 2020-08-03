@@ -1,0 +1,4 @@
+name: "DataViz"
+title: "Data Visualization Remote Seminar"
+output_dir: "docs"
+exclude: ["*.Rmd", "*.csv", "*.key", "*.pdf", "keynote"]
