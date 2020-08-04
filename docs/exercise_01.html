@@ -990,10 +990,15 @@ your-project-name/
 <li><strong>Load</strong> the libraries required for the analysis. Create an R code chunk that runs this code:</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+library(tidyverse)
+library(gapminder)
+library(socviz)</code></pre>
 </div>
 <h2 id="examine-the-gapminder-data">3 Examine the Gapminder Data</h2>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+gapminder</code></pre>
 <pre><code>
 # A tibble: 1,704 x 6
    country     continent  year lifeExp      pop gdpPercap

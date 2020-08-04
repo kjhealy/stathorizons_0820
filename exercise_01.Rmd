@@ -5,6 +5,11 @@ date: "8/3/2020"
 output: distill::distill_article
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
 ## Overview 
 
 In these exercises, you will use R, RStudio, and ggplot to look at the `gapminder` data again. Our goal is to create an RStudio project, load the required libraries, and begin looking at our data. 
@@ -29,7 +34,7 @@ In these exercises, you will use R, RStudio, and ggplot to look at the `gapminde
 
 - **Load** the libraries required for the analysis. Create an R code chunk that runs this code:
 
-```{r setup}
+```{r libraries}
 
 library(tidyverse)
 library(gapminder)
