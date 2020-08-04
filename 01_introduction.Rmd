@@ -53,6 +53,11 @@ my_packages <- c("tidyverse", "broom", "coefplot", "drat",
 
 install.packages(my_packages, repos = "http://cran.rstudio.com")
 
+data_packages <- c("covdata", "congress", "kjhnet", "nycdogs")
+
+drat::addRepo("kjhealy")
+install.packages(data_packages)
+
 ```
 
 
