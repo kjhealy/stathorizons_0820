@@ -54,9 +54,9 @@ gapminder
 1. A scatter plot (using `geom_point()`) of GDP per Capita (on the x-axis) and Life Expectancy (on the y-axis). 
 2. Adjust the plot so that the x-axis scale is in log units rather than raw GDP, and properly label the axes. 
 3. Using `subset()` function, choose a *single year* and make a histogram of country populations. *Hint:* Use `==` and not `=` when asking `subset` to pick a particular value of `year`.
-5. Try adding a log scale to the x-axis.
-6. Facet the plot by continent.
-7. Subset the data so that you pick out the following four years: 1952, 1972, 1992, and 2002. Plot a histogram of life expectancy faceted by year. 
+4. Try adding a log scale to the x-axis.
+5. Facet the plot by continent.
+6. Subset the data so that you pick out the following four years: 1952, 1972, 1992, and 2002. Plot a histogram of life expectancy faceted by year. 
 
 ## 4 Further Questions and Topics
 
