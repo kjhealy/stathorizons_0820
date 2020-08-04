@@ -1,0 +1,65 @@
+---
+title: "Data Visualization Exercises: 2"
+author: "Kieran Healy"
+date: "8/3/2020"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## 1 Overview 
+
+Working within the project you created, you'll explore the GSS data in `gss_sm` a little more.
+
+## 2 Setup
+
+- **Load** the libraries required for the analysis. Create an R code chunk that runs this code:
+
+```{r libraries}
+
+library(tidyverse)
+library(socviz)
+
+```
+
+## 3 Examine the GSS data
+
+```{r gss}
+gss_sm
+```
+
+## 4 Tables and Graphs
+
+### Example
+
+```{r example}
+gss_sm %>% 
+    group_by(degree, kids) %>%
+    tally() %>%
+    drop_na() %>%
+    mutate(pct = n/sum(n) * 100) %>%
+    ggplot(mapping = aes(x = kids, y = pct)) +
+    geom_col() +
+    facet_wrap(~ degree)
+```
+
+### Things to try 
+
+- Make the facet so that there is only one row in the plot. Then try it with only one column.
+- Create the plot above, but for respondents from the Northeast only
+- Add labels and a title
+
+
+- The GSS asks respondents how happy they are feeling. In `gss_sm` it's the `happy` column. Make a graph of the measure. 
+- Make a table and then a graph of happiness by sex of respondent.
+- Try the same with happiness and marital status.
+- What graph options are available for a measure like this? Which seem best to you? Experiment with `geom_col()`, `geom_point()`, and `geom_line()`.
+- Explore graphing the relationship between happiness and age. Options include choosing to focus on just one of the happiness measures.
+
+
+## 5 Produce your answers as an HTML, PDF, or Word document
+
+- Once you've written your code, knit your document.
