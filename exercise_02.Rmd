@@ -39,7 +39,7 @@ gss_sm
 gss_sm %>% 
     group_by(degree, kids) %>%
     tally() %>%
-    drop_na() %>%
+    drop_na() %>% ## This function drops any row in your table with missing values
     mutate(pct = n/sum(n) * 100) %>%
     ggplot(mapping = aes(x = kids, y = pct)) +
     geom_col() +
@@ -56,8 +56,10 @@ gss_sm %>%
 - The GSS asks respondents how happy they are feeling. In `gss_sm` it's the `happy` column. Make a graph of the measure. 
 - Make a table and then a graph of happiness by sex of respondent.
 - Try the same with happiness and marital status.
-- What graph options are available for a measure like this? Which seem best to you? Experiment with `geom_col()`, `geom_point()`, and `geom_line()`.
-- Explore graphing the relationship between happiness and age. Options include choosing to focus on just one of the happiness measures.
+- What graph options are available for a measure like this? Which seem best to you? Experiment with `geom_col()`, `geom_point()`, and `geom_line()`. 
+- Explore graphing the relationship between happiness and age. Options include choosing to focus on just one of the happiness measures. Can `geom_boxplot()` be of any use?
+
+- Practice summarizing at different levels of grouping. Can you produce, for example, two- or three-way summaries of average number of children by sex and degree, or sex, degree, and partyid? Can you use `geom_point()` to produce faceted dotplots of the results? (Hint 1: remember to pass `na.rm =  TRUE` when invoking `mean()`. Hint 2: try reordering the facets by the variable you're summarizing.) 
 
 
 ## 5 Produce your answers as an HTML, PDF, or Word document

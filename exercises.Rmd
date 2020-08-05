@@ -7,7 +7,7 @@ output: distill::distill_article
 
 ## [First Day](exercise_01.html)
 
-## Second Day
+## [Second Day](exercise_02.html)
 
 ## Third Day
 
