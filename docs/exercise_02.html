@@ -1023,7 +1023,8 @@ gss_sm %&gt;%
 <h3 id="things-to-try">Things to try</h3>
 <ul>
 <li><p>Make the facet so that there is only one row in the plot. Then try it with only one column.</p></li>
-<li><p>Create the plot above, but for respondents from the Northeast only</p></li>
+<li><p>Create the plot above, but for respondents from the Northeast only. (Hint: try using <code>filter()</code> after you tgroup the data but before you <code>tally()</code> it.)</p></li>
+<li><p>Try using <code>geom_line()</code> instead of <code>geom_col()</code>. Experiment with making the line thicker using the <code>size</code> option.</p></li>
 <li><p>Add labels and a title</p></li>
 <li><p>The GSS asks respondents how happy they are feeling. In <code>gss_sm</code> it’s the <code>happy</code> column. Make a graph of the measure.</p></li>
 <li><p>Make a table and then a graph of happiness by sex of respondent.</p></li>

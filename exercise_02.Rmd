@@ -49,7 +49,8 @@ gss_sm %>%
 ### Things to try 
 
 - Make the facet so that there is only one row in the plot. Then try it with only one column.
-- Create the plot above, but for respondents from the Northeast only
+- Create the plot above, but for respondents from the Northeast only. (Hint: try using `filter()` after you tgroup the data but before you `tally()` it.)
+- Try using `geom_line()` instead of `geom_col()`. Experiment with making the line thicker using the `size` option.
 - Add labels and a title
 
 
