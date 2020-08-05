@@ -1022,14 +1022,17 @@ gss_sm %&gt;%
 </div>
 <h3 id="things-to-try">Things to try</h3>
 <ul>
-<li><p>Make the facet so that there is only one row in the plot. Then try it with only one column.</p></li>
-<li><p>Create the plot above, but for respondents from the Northeast only. (Hint: try using <code>filter()</code> after you tgroup the data but before you <code>tally()</code> it.)</p></li>
-<li><p>Try using <code>geom_line()</code> instead of <code>geom_col()</code>. Experiment with making the line thicker using the <code>size</code> option.</p></li>
-<li><p>Add labels and a title</p></li>
+<li>Make the facet so that there is only one row in the plot. Then try it with only one column.</li>
+<li>Create the plot above, but for respondents from the Northeast only. (Hint: try using <code>filter()</code> after you tgroup the data but before you <code>tally()</code> it.)</li>
+<li>Try using <code>geom_line()</code> instead of <code>geom_col()</code>. Experiment with making the line thicker using the <code>size</code> option.</li>
+<li>Add labels and a title</li>
+</ul>
+<h3 id="other-measures">Other measures</h3>
+<ul>
 <li><p>The GSS asks respondents how happy they are feeling. In <code>gss_sm</code> it’s the <code>happy</code> column. Make a graph of the measure.</p></li>
-<li><p>Make a table and then a graph of happiness by sex of respondent.</p></li>
+<li><p>Make a table and then a graph of happiness by sex of respondent. Calculate a frequency or percentage and graph that instead of the raw N.</p></li>
 <li><p>Try the same with happiness and marital status.</p></li>
-<li><p>What graph options are available for a measure like this? Which seem best to you? Experiment with <code>geom_col()</code>, <code>geom_point()</code>, and <code>geom_line()</code>.</p></li>
+<li><p>What graph options are available for a measure like this? Which seem best to you? Experiment with <code>geom_col()</code>, <code>geom_point()</code>, and <code>geom_line()</code>, or others if you like.</p></li>
 <li><p>Explore graphing the relationship between happiness and age. Options include choosing to focus on just one of the happiness measures. Can <code>geom_boxplot()</code> be of any use?</p></li>
 <li><p>Practice summarizing at different levels of grouping. Can you produce, for example, two- or three-way summaries of average number of children by sex and degree, or sex, degree, and partyid? Can you use <code>geom_point()</code> to produce faceted dotplots of the results? (Hint 1: remember to pass <code>na.rm =  TRUE</code> when invoking <code>mean()</code>. Hint 2: try reordering the facets by the variable you’re summarizing.)</p></li>
 </ul>
