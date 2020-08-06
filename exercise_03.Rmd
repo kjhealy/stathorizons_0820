@@ -33,6 +33,8 @@ library(socviz)
 midwest
 ```
 
+
+
 ## 4 The Elvis-Nixon image
 
 
