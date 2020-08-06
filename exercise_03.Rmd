@@ -12,7 +12,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 1 Overview 
 
-Today's exercises are about producing plots from models. If you do the Elvis-Nixon example, be sure that your RStudio session has loaded up the course packet project, where the Elvis meets Nixon image can be found.
+Today's exercises are about producing plots from models. This is trickier than previous topics because there are so many different kinds of statistical models that people are interested in fitting, and so we can't explore them all. In office hour I can try to point people toward different packages that might be of interest to people working in different topic areas. This is also an area where there's recently been a lot of rapid development in the range of tools available.
+
+
+Work through the example below grouped analysis using `broom` and Principal Components Analysis. Do it line by line. As you go, make a note of any points where you're not sure what's happening. 
 
 ## 2 Setup
 
@@ -27,17 +30,106 @@ library(socviz)
 
 ```
 
-## 3 The Midwest data
+## 3 PCA on Midwestern counties, grouped by state
+
 
 ```{r gss}
 midwest
 ```
 
+```{r prep-data}
 
 
-## 4 The Elvis-Nixon image
+mw_pca <- midwest %>%
+    group_by(state) %>%
+    select_if(is.numeric) %>%
+    select(-PID) %>%
+    nest()
+    
+mw_pca
+
+```
+
+### Component level
+
+```{R pca-functions}
+do_pca <- function(df){
+  prcomp(df,
+         center = TRUE, scale = TRUE)
+}
+
+do_tidy <- function(pr){
+    broom::tidy(pr, matrix = "pcs")
+}
+
+```
+
+```{r }
+state_pca  <- mw_pca %>%
+    mutate(pca = map(data, do_pca),
+           results = map(pca, do_tidy)) 
+
+state_pca
+
+```
+
+```{r plot-it}
+state_pca %>%
+    unnest(cols = c(results)) %>%
+    ggplot(aes(x = PC, y = percent)) +
+    geom_line(size = 1.1) +
+    facet_wrap(~ state, nrow = 1) +
+    labs(x = "Principal Component",
+         y = "Variance Explained")
+```
+
+### Observation level
+
+```{r pca-aug}
+do_aug <- function(pr){
+    broom::augment(pr)
+}
 
 
-## 5 Produce your answers as an HTML, PDF, or Word document
+state_pca  <- mw_pca %>%
+    mutate(pca = map(data, do_pca),
+           results = map(pca, do_tidy),
+           fitted = map(pca, do_aug)) 
+
+state_pca
+```
+
+```{r plot-it-2}
+state_pca %>%
+    unnest(cols = c(fitted)) %>%
+    ggplot(aes(x = .fittedPC1,
+               y = .fittedPC2)) +
+    geom_point() +
+    facet_wrap(~ state) + 
+    labs(x = "First Principal Component", 
+         y = "Second Principal Component") 
+```
+
+```{r oneshot}
+midwest %>%
+    group_by(state) %>%
+    select_if(is.numeric) %>%
+    select(-PID) %>%
+    nest() %>%
+    mutate(pca = map(data, do_pca),
+           results = map(pca, do_tidy),
+           fitted = map(pca, do_aug)) %>%
+    unnest(cols = c(fitted)) %>%
+    add_column(county = midwest$county) %>%
+    ggplot(mapping = aes(x = .fittedPC2,
+               y = .fittedPC3,
+               label = county)) +
+    geom_text(size = 2) +
+    labs(x = "Second Principal Component", 
+         y = "Third Principal Component") +
+    theme_minimal() + facet_wrap(~ state, ncol = 1)
+```
+
+## 4 Knit the document as an HTML, PDF
 
 - Once you've written your code, knit your document.
