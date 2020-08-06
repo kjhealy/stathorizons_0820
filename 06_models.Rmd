@@ -540,12 +540,12 @@ bo_gg %>% select(factor, AME, lower, upper)
 
 
 ```{r 06-models-33}
-p <- ggplot(data = bo_gg, aes(x = reorder(factor, AME),
-                              y = AME, ymin = lower, ymax = upper))
+p <- ggplot(data = bo_gg, aes(y = reorder(factor, AME),
+                              x = AME, xmin = lower, xmax = upper))
 
-p + geom_hline(yintercept = 0, color = "gray80") +
-    geom_pointrange() + coord_flip() +
-    labs(x = NULL, y = "Average Marginal Effect") 
+p + geom_vline(xintercept = 0, color = "gray80") +
+    geom_pointrange() +
+    labs(y = NULL, x = "Average Marginal Effect") 
 
 ```
 
@@ -553,11 +553,11 @@ p + geom_hline(yintercept = 0, color = "gray80") +
 ```{r 06-models-34}
 pv_cp <- cplot(out_bo, x = "sex", draw = FALSE)
 
-p <- ggplot(data = pv_cp, aes(x = reorder(xvals, yvals),
-                              y = yvals, ymin = lower, ymax = upper))
+p <- ggplot(data = pv_cp, aes(y = reorder(xvals, yvals),
+                              x = yvals, xmin = lower, xmax = upper))
 
-p + geom_hline(yintercept = 0, color = "gray80") +
-    geom_pointrange() + coord_flip() +
+p + geom_vline(xintercept = 0, color = "gray80") +
+    geom_pointrange() + 
     labs(x = NULL, y = "Conditional Effect") 
 
 ```
