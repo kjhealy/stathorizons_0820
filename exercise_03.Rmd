@@ -110,7 +110,7 @@ state_pca %>%
          y = "Second Principal Component") 
 ```
 
-```{r oneshot, fig.height = 6}
+```{r oneshot, fig.height = 12}
 midwest %>%
     group_by(state) %>%
     select_if(is.numeric) %>%
