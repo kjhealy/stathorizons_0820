@@ -169,7 +169,7 @@ p + geom_jitter(position = position_jitter(width=0.15)) +
     labs(x=NULL) + coord_flip() + theme(legend.position = "top")      
 ```
 
-**NOTE** We've used `coord_flip()` for illustrative purposes, and because it used to be required to get `geom_boxplot()` to work properly with categories on the y-axis. But this isn't true anymore. Just map the variables directly to the axes:
+**NOTE** In the past few examples, we've used `coord_flip()` for illustrative purposes, and because it used to be required to get `geom_boxplot()` to work properly with categories on the y-axis. But this isn't true anymore. Just map the variables directly to the axes:
 
 ```{r 05-tables-and-labels-11a }
 # changing the mapping means we change labs() as well, to y.
@@ -247,12 +247,13 @@ p + geom_point(size=3) +
 ```
 
 ```{r 05-tables-and-labels-14 }
-p <- ggplot(data = by_country, mapping = aes(x = reorder(country,
-              donors_mean), y = donors_mean))
+p <- ggplot(data = by_country,
+            mapping = aes(x = donors_mean,
+                          y = reorder(country, donors_mean)))
 
-p + geom_pointrange(mapping = aes(ymin = donors_mean - donors_sd,
-       ymax = donors_mean + donors_sd)) +
-     labs(x= NULL, y= "Donor Procurement Rate") + coord_flip()      
+p + geom_pointrange(mapping = aes(xmin = donors_mean - donors_sd,
+       xmax = donors_mean + donors_sd)) +
+     labs(x = "Donor Procurement Rate", y = NULL) 
 ```
 
 ## Plot text directly
