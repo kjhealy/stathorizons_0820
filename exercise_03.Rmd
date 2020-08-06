@@ -1,0 +1,41 @@
+---
+title: "Data Visualization Exercises: 3"
+author: "Kieran Healy"
+date: "8/3/2020"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## 1 Overview 
+
+Today's exercises are about producing plots from models. If you do the Elvis-Nixon example, be sure that your RStudio session has loaded up the course packet project, where the Elvis meets Nixon image can be found.
+
+## 2 Setup
+
+- **Load** the libraries required for the analysis. Create an R code chunk that runs this code:
+
+```{r libraries}
+
+library(tidyverse)
+library(broom)
+library(gapminder)
+library(socviz)
+
+```
+
+## 3 The Midwest data
+
+```{r gss}
+midwest
+```
+
+## 4 The Elvis-Nixon image
+
+
+## 5 Produce your answers as an HTML, PDF, or Word document
+
+- Once you've written your code, knit your document.
