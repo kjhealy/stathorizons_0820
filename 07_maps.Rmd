@@ -307,39 +307,47 @@ pop_p2 + labs(title = "Reverse-coded Population Density",
 ```{r 07-maps-14, fig.cap='Statebins of the election results. We omit DC from the Clinton map to prevent the scale becoming unbalanced.', warning = FALSE, out.width = "100%", fig.show = "hold", fig.margin = TRUE, fig.width = 5, fig.height = 4, tidy = FALSE}
 library(statebins)
 
-statebins_continuous(state_data = election, state_col = "state",
-                     text_color = "white", value_col = "pct_trump",
-                     brewer_pal="Reds", font_size = 3,
-                     legend_title="Percent Trump")
+statebins(state_data = election, 
+          state_col = "state",
+          value_col = "pct_trump",
+          font_size = 3, 
+          name = "Percent",
+          palette = "OrRd", 
+          direction = 1) + 
+    labs(title = "2016 Trump Vote") + 
+    theme_statebins() 
 
-statebins_continuous(state_data = subset(election, st %nin% "DC"),
-                     state_col = "state",
-                     text_color = "black", value_col = "pct_clinton",
-                     brewer_pal="Blues", font_size = 3,
-                     legend_title="Percent Clinton")
+statebins(state_data = subset(election, st %nin% "DC"),
+          state_col = "state",
+          value_col = "pct_clinton",
+          name = "Percent",
+          palette = "Blues",
+          font_size = 3, 
+          direction = 0) + 
+    labs(title = "2016 Clinton Vote") + 
+    theme_statebins()
 ```
-
 
 ```{r 07-maps-15, fig.cap='Manually specifying colors for statebins.', warning = FALSE, out.width = "100%", fig.show = "hold", fig.margin = TRUE, fig.width = 5, fig.height = 4, tidy = FALSE}
 
-election <- election %>% mutate(color = recode(party, Republican = "darkred",
-                                               Democrat = "royalblue"))
-
-statebins_manual(state_data = election, state_col = "st",
-                 color_col = "color", text_color = "white",
-                 font_size = 3, legend_title="Winner",
-                 labels=c("Trump", "Clinton"), legend_position = "right")
-
-statebins(state_data = election,          
-          state_col = "state", value_col = "pct_trump",
-          text_color = "white", breaks = 4,
-          labels = c("4-21", "21-37", "37-53", "53-70"),
-          brewer_pal="Reds", font_size = 3, legend_title="Percent Trump")
+statebins(state_data = election,
+          state_col = "state",
+          value_col = "winner",
+          name = "Winner",
+          font_size = 3, 
+          dark_label = "white", 
+          light_label = "white",
+          ggplot2_scale_function = scale_fill_manual,
+          values = c(Trump = "darkred", Clinton = "royalblue")) + 
+    labs(title = "2016 Election") + 
+    theme_statebins()
 
 ```
 
 
+
 ## Small-multiple maps
+
 
 ```{r 07-maps-16}
 opiates
