@@ -105,8 +105,6 @@ fb_map %>% ggplot(mapping = aes(fill = pct)) +
    labs(fill = "Percent of All Licensed Dogs in the City") +
   annotate(geom = "text", x = -74.145 + 0.029, y = 40.82-0.012, 
            label = "New York City's French Bulldogs", size = 6) + 
-  annotate(geom = "text", x = -74.1178, y = 40.7955, 
-           label = "By Zip Code. Based on Licensing Data", size = 5) + 
     theme_nymap() + 
     guides(fill = guide_legend(title.position = "top", 
                                label.position = "bottom",
